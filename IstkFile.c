@@ -8,6 +8,6 @@ int IstkFile(const char*s)
 		if(strcmp(pFile,".tk")==0)
 			return 1;
 		else
-			return 9;
+			return 0;
 }
 
