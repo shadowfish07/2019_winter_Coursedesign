@@ -4,7 +4,7 @@
 
 typedef struct 
 {
-    char* descripsion;
+    char* description;
     char* alternativeAnswer[4];
     int rightAnswer;
 }question;
