@@ -11,6 +11,7 @@
                 "${fileDirname}\\PrintQuestion.c",
                 "${fileDirname}\\MarkingSystemLib.c",
                 "${fileDirname}\\zhangqianyuLib.c",
+                "${fileDirname}\\AddTkFile.c",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
                 

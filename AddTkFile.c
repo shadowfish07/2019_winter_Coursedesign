@@ -5,10 +5,9 @@ void AddTkFile(char*name)
 {
 	FILE*fp;
 	char fileName[100]={0};
-	strcpy(fileName,"C:\\");
 	strcat(fileName,name);
 	strcat(fileName,".tk");
-	fp=fopen(fileName,"w+");
+	fp=fopen(fileName,"w");
 	if(!fp)
 	{
 		printf("can't open file %s\n",fileName);

@@ -11,6 +11,9 @@
         "tuple": "cpp",
         "type_traits": "cpp",
         "utility": "cpp",
-        "io.h": "c"
+        "io.h": "c",
+        "stdio.h": "c",
+        "markingsystemlib.h": "c",
+        "TEST.C": "cpp"
     }
 }
