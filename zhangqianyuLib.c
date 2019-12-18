@@ -9,24 +9,18 @@
 
 extern databaseList* databases;
 //读入路径为path的.tk文件并返回存储它的database,若路径下无该文件则返回NULL
-questionList* ReadtkFile(const char* path)
+database* ReadtkFile(const char* path)
 {
-    database* result = (database*)malloc(sizeof(database));
-    result->path = path;
-    questionList* newQuestionList = (questionList*)malloc(sizeof(questionList));
     FILE* infile = fopen(path,"rb");
-    if (fopen == NULL)
+    if (infile == NULL)
     {
         return NULL;
     }
-    //while (!feof(infile))
-    {
-        fread(newQuestionList,sizeof(questionList),1,infile);
-        question** newQuestion=(question**)malloc(newQuestionList->size*sizeof(question));
-        fread(newQuestion,sizeof(question),newQuestionList->size,infile);
-    }
+    database* result = (database*)malloc(sizeof(database));
+    result->path = path;
+    result->questionList=*readQuestionList(infile);
     fclose(infile);
-    return newQuestionList;
+    return result;
 }
 
 //向一个题库添加题目
@@ -113,24 +107,10 @@ void ReadPathTkFiles()
     }
     do
     {
-            FILE* tkFile =fopen(fileinfo.name,"rb");
-            database* newDatabase = (database*)malloc(sizeof(database));
-            char* path = (char*)malloc(100*sizeof(char));
-            strcpy(path,fileinfo.name);
-            newDatabase->path=path;
-            questionList* newQuestionList =InitQuestionList(50);
-            //while(!feof(tkFile))
-            {
-                fread(newQuestionList,sizeof(questionList),1,tkFile);
-                // question* newQuestion=(question*)malloc(newQuestionList->size*sizeof(question));
-                // fread(newQuestion,sizeof(question),newQuestionList->size,tkFile);
-            }
-            fclose(tkFile);
-            // printf("%s",newQuestionList->questions[0]->description);
-            // newDatabase->questionList=newQuestionList;
-            // AddToDatabaseList(newDatabase,databases);
-            printf("%d\t%s\n",databases->size,fileinfo.name);
-            
+        FILE* tkFile =fopen(fileinfo.name,"rb");
+        database* newDatabase=ReadtkFile(fileinfo.name);
+        AddToDatabaseList(*newDatabase,databases);
+        fclose(tkFile);
     }while(!_findnext(handle,&fileinfo));
     _findclose(handle);
 }

@@ -2,14 +2,14 @@
 #include "MarkingSystemLib.h"
 
 
-questionList InitQuestionList(int max)
+questionList* InitQuestionList(int max)
 {
     question* newQuestion = (question*)malloc(max*sizeof(question));
     questionList* newQuestionList = (questionList*)malloc(sizeof(questionList));
     newQuestionList->questions=newQuestion;
     newQuestionList->max=max;
     newQuestionList->size=0;
-    return *newQuestionList;
+    return newQuestionList;
 }
 
 void AddToQuestionList(question newQuestion,questionList* toQuestionList)
@@ -30,14 +30,14 @@ void AddToQuestionList(question newQuestion,questionList* toQuestionList)
     toQuestionList->questions[toQuestionList->size++]=newQuestion;
 }
 
-databaseList InitDatabaseList(int max)
+databaseList* InitDatabaseList(int max)
 {
     database* newDatabase = (database*)malloc(max*sizeof(database));
     databaseList* newDatabaseList = (databaseList*)malloc(sizeof(databaseList));
     newDatabaseList->databases=newDatabase;
     newDatabaseList->max=max;
     newDatabaseList->size=0;
-    return *newDatabaseList;
+    return newDatabaseList;
 }
 
 void AddToDatabaseList(database newDatabase,databaseList* toDatabaseList)
@@ -56,4 +56,32 @@ void AddToDatabaseList(database newDatabase,databaseList* toDatabaseList)
         toDatabaseList->max = toDatabaseList->size*2;
     }
     toDatabaseList->databases[toDatabaseList->size++]=newDatabase;//test
+}
+
+void writeQuestion(FILE* file,question* q,int num)
+{
+    fwrite(q,sizeof(question),num,file);
+}
+
+void writeQuestionList(FILE* file,questionList*ql)
+{
+    fwrite(&ql->size,sizeof(int),1,file);
+    fwrite(&ql->max,sizeof(int),1,file);
+    writeQuestion(file,ql->questions,ql->size);
+}
+
+question* readQuestion(FILE* file,int num)
+{
+    question* result=(question*)malloc(num*sizeof(question));
+    fread(result,sizeof(question),num,file);
+    return result;
+}
+
+questionList* readQuestionList(FILE* file)
+{
+    questionList* result =(questionList*)malloc(sizeof(questionList));
+    fread(&result->size,sizeof(int),1,file);
+    fread(&result->max,sizeof(int),1,file);
+    result->questions= readQuestion(file,result->size);
+    return result;
 }

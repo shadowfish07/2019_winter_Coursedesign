@@ -29,10 +29,15 @@ typedef struct
     int max;
 }databaseList;
 
-questionList InitQuestionList(int max);
+questionList* InitQuestionList(int max);
 void AddToQuestionList(question newQuestion,questionList* toQuestionList);
 
-databaseList InitDatabaseList(int max);
+databaseList* InitDatabaseList(int max);
 void AddToDatabaseList(database newDatabase,databaseList* toDatabaseList);
+
+//void writeQuestion(FILE* file,question* q,int num);
+void writeQuestionList(FILE* file,questionList*ql);
+questionList* readQuestionList(FILE* file);
+//question* readQuestion(FILE* file,int num);
 
 #endif

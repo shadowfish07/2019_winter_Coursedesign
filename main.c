@@ -44,7 +44,7 @@ int main()
 {
     printf("欢迎使用 单项选择题标准化考试系统\n");
     printf("正在扫描题库...\n");
-    databases= InitDatabaseList(10);
+    databases= *InitDatabaseList(10);
     ReadPathTkFiles();
     if(databases.size==1)
     {
@@ -59,7 +59,7 @@ int main()
         printf("成功新建题库 admin.tk\n自动进入题库编辑系统\n");
         database* newDatabase=(database*)malloc(sizeof(database));
         newDatabase->path="admin.tk";
-        newDatabase->questionList=InitQuestionList(50);
+        newDatabase->questionList=*InitQuestionList(50);
         AddToDatabaseList(*newDatabase,&databases);
         AddQuestionSystem();
     }
