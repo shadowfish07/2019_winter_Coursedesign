@@ -7,8 +7,13 @@
             "args": [
                 "-g",
                 "${file}",
+                "${fileDirname}\\IstkFile.c",
+                "${fileDirname}\\PrintQuestion.c",
+                "${fileDirname}\\MarkingSystemLib.c",
+                "${fileDirname}\\zhangqianyuLib.c",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                
             ],
             "options": {
                 "cwd": "C:\\mingw64\\bin"

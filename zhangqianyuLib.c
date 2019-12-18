@@ -3,8 +3,9 @@
 #include "MarkingSystemLib.h"
 #include <time.h>
 #include <string.h>
-
-//¶ÁÈëÂ·¾¶ÎªpathµÄ.tkÎÄ¼ş²¢·µ»Ø´æ´¢ËüµÄdatabase,ÈôÂ·¾¶ÏÂÎŞ¸ÃÎÄ¼şÔò·µ»ØNULL
+#include <io.h>
+#include "zhangqianyuLib.h"
+//è¯»å…¥è·¯å¾„ä¸ºpathçš„.tkæ–‡ä»¶å¹¶è¿”å›å­˜å‚¨å®ƒçš„database,è‹¥è·¯å¾„ä¸‹æ— è¯¥æ–‡ä»¶åˆ™è¿”å›NULL
 questionList* ReadtkFile(const char* path)
 {
     database* result = (database*)malloc(sizeof(database));
@@ -23,7 +24,7 @@ questionList* ReadtkFile(const char* path)
     return newQuestionList;
 }
 
-//ÏòÒ»¸öÌâ¿âÌí¼ÓÌâÄ¿
+//å‘ä¸€ä¸ªé¢˜åº“æ·»åŠ é¢˜ç›®
 void AddQuestion(char* description,char* alternativeAnswer[4],int rightAnswer,database* toDatabase)
 {
     FILE* outfile = fopen(toDatabase->path,"wb");
@@ -41,7 +42,7 @@ void AddQuestion(char* description,char* alternativeAnswer[4],int rightAnswer,da
     fclose(outfile);
 }
 
-//´ÓÒ»¸öÌâ¿âÖĞ³éÈ¡num¸öÌâÄ¿£¬·µ»ØÖµÎª³éµ½µÄÌâÄ¿Êı×é,num´óÓÚÌâ¿âÌâÄ¿Á¿Ê±·µ»ØNULL
+//ä»ä¸€ä¸ªé¢˜åº“ä¸­æŠ½å–numä¸ªé¢˜ç›®ï¼Œè¿”å›å€¼ä¸ºæŠ½åˆ°çš„é¢˜ç›®æ•°ç»„,numå¤§äºé¢˜åº“é¢˜ç›®é‡æ—¶è¿”å›NULL
 question** GetRandomQuestion(database* fromDatabase,int num)
 {
     if (num>fromDatabase->questionList->size)
@@ -76,3 +77,18 @@ question** GetRandomQuestion(database* fromDatabase,int num)
     
 	return result;
 }
+
+//è¯»å–ç›®å½•ä¸‹æ‰€æœ‰.tkæ–‡ä»¶å¹¶è¾“å‡º
+void ReadPathTkFiles()
+{
+    char* filepath = "*.tk";
+    struct _finddata_t fileinfo;
+    long handle;
+    handle=_findfirst(filepath,&fileinfo);
+    if(handle==-1)
+    {
+        printf("å½“å‰ç›®å½•ä¸‹æ— ä»»ä½•é¢˜åº“");
+        return;
+    }
+}
+
