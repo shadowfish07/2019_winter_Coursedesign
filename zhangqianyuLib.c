@@ -5,9 +5,11 @@
 #include <string.h>
 
 //读入路径为path的.tk文件并返回存储它的database,若路径下无该文件则返回NULL
-database* ReadtkFile(const char* path)
+questionList* ReadtkFile(const char* path)
 {
     database* result = (database*)malloc(sizeof(database));
+    result->path = path;
+    questionList* newQuestionList = (questionList*)malloc(sizeof(questionList));
     FILE* infile = fopen(path,"rb");
     if (fopen == NULL)
     {
@@ -15,10 +17,10 @@ database* ReadtkFile(const char* path)
     }
     while (!feof(infile))
     {
-        fread(result,sizeof(database),1,infile);
+        fread(newQuestionList,sizeof(questionList),1,infile);
     }
     fclose(infile);
-    return result;
+    return newQuestionList;
 }
 
 //向一个题库添加题目
@@ -32,10 +34,10 @@ void AddQuestion(char* description,char* alternativeAnswer[4],int rightAnswer,da
     newQuestion->alternativeAnswer[1] = alternativeAnswer[1];
     newQuestion->alternativeAnswer[2] = alternativeAnswer[2];
     newQuestion->alternativeAnswer[3] = alternativeAnswer[3];
-    newQuestion->descripsion = description;
+    newQuestion->description = description;
     newQuestion->rightAnswer = rightAnswer;
     AddToQuestionList(newQuestion,toDatabase->questionList);
-    fwrite(toDatabase,sizeof(toDatabase),1,outfile);
+    fwrite(toDatabase->questionList,sizeof(questionList),1,outfile);
     fclose(outfile);
 }
 

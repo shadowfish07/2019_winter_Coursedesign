@@ -1,5 +1,5 @@
 #ifndef _PrintQuestion
-#define_PrintQuestion
-void PrintalternativeAnswer(char**p,int n);
-void PrintQuestoion(const question*fromQuestion)
+#define _PrintQuestion
+#include "MarkingSystemLib.h"
+void PrintQuestoion(const question*fromQuestion);
 #endif
