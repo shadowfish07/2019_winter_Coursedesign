@@ -30,14 +30,15 @@ void AddToQuestionList(question newQuestion,questionList* toQuestionList)
     toQuestionList->questions[toQuestionList->size++]=newQuestion;
 }
 
-databaseList* InitDatabaseList(int max)
+databaseList*InitDatabaseList(int max)
 {
+    databaseList* result = (databaseList*)malloc(sizeof(databaseList));
     database* newDatabase = (database*)malloc(max*sizeof(database));
-    databaseList* newDatabaseList = (databaseList*)malloc(sizeof(databaseList));
-    newDatabaseList->databases=newDatabase;
-    newDatabaseList->max=max;
-    newDatabaseList->size=0;
-    return newDatabaseList;
+    newDatabase->questionList=*InitQuestionList(50);
+    result->databases=newDatabase;
+    result->max=max;
+    result->size=0;
+    return result;
 }
 
 void AddToDatabaseList(database newDatabase,databaseList* toDatabaseList)

@@ -12,7 +12,7 @@ void AddQuestionSystem()
     printf("------------题库编辑系统------------\n");
     while(1)
     {
-        question* newQuestion = InitQuestion();
+        question* newQuestion =(question*)malloc(sizeof(question));
         printf("当前编辑题库：%s\n",databases.databases[currentDatabase].path);
         printf("当前题库题目总数：%d\n",databases.databases[currentDatabase].questionList.size);
         printf("---新建题目---\n");
@@ -29,7 +29,7 @@ void AddQuestionSystem()
         printf("请输入正确答案(0->A 1->B 2->C 3->D\n");
         scanf("%d",&newQuestion->rightAnswer);
         printf("题目导入完成\n");
-        AddQuestionToFile(newQuestion,databases.databases[currentDatabase]);
+        AddQuestionToFileAndList(*newQuestion,&databases.databases[currentDatabase]);
         printf("是否继续导入？Y->是 N->否\n");
         char ch;
         getchar();

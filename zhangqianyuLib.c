@@ -7,7 +7,7 @@
 #include "zhangqianyuLib.h"
 #include "IstkFile.h"
 
-extern databaseList* databases;
+extern databaseList databases;
 //读入路径为path的.tk文件并返回存储它的database,若路径下无该文件则返回NULL
 database* ReadtkFile(const char* path)
 {
@@ -17,7 +17,8 @@ database* ReadtkFile(const char* path)
         return NULL;
     }
     database* result = (database*)malloc(sizeof(database));
-    result->path = path;
+    result->path=(char*)malloc(256*sizeof(char));
+    strcpy(result->path,path);
     result->questionList=*readQuestionList(infile);
     fclose(infile);
     return result;
@@ -48,11 +49,7 @@ void AddQuestionToFileAndList(question newQuestion,database* toDatabase)
     if (outfile == NULL)
         exit(1);
     AddToQuestionList(newQuestion,&toDatabase->questionList);
-    fwrite(&toDatabase->questionList,sizeof(questionList),1,outfile);
-    for(int i=0;i<toDatabase->questionList.size;i++)
-    {
-        fwrite(&(toDatabase->questionList.questions[i]),sizeof(question),1,outfile);
-    }
+    writeQuestionList(outfile,&toDatabase->questionList);
     fclose(outfile);
 }
 
@@ -95,6 +92,7 @@ question* GetRandomQuestion(database* fromDatabase,int num)
 //读取目录下所有.tk文件并输出
 void ReadPathTkFiles()
 {
+
     char* filepath = "*.tk";
     struct _finddata_t fileinfo;
     long handle;
@@ -109,7 +107,7 @@ void ReadPathTkFiles()
     {
         FILE* tkFile =fopen(fileinfo.name,"rb");
         database* newDatabase=ReadtkFile(fileinfo.name);
-        AddToDatabaseList(*newDatabase,databases);
+        AddToDatabaseList(*newDatabase,&databases);
         fclose(tkFile);
     }while(!_findnext(handle,&fileinfo));
     _findclose(handle);
