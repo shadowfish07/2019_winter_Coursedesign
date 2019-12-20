@@ -103,13 +103,17 @@ void ReadPathTkFiles()
         printf("当前目录下无任何题库\n");
         return;
     }
+    printf("----题库列表----\n");
+    printf("序号\t文件名\n");
     do
     {
         FILE* tkFile =fopen(fileinfo.name,"rb");
         database* newDatabase=ReadtkFile(fileinfo.name);
         AddToDatabaseList(*newDatabase,&databases);
         fclose(tkFile);
+        printf("%d\t%s\n",databases.size,fileinfo.name);
     }while(!_findnext(handle,&fileinfo));
     _findclose(handle);
+    printf("--题库载入完毕--");
 }
 
