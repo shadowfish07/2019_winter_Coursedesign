@@ -66,26 +66,11 @@ void AddQuestionSystem()
 
 int main()
 {
-	int i;
-	question L;
-	printf("输入一个字符串\n");
-	gets(L.description);
-	strcpy(L.alternativeAnswer[0],"123");
-	strcpy(L.alternativeAnswer[1],"1235");
-	strcpy(L.alternativeAnswer[2],"1233");
-	strcpy(L.alternativeAnswer[3],"1223");
-	PrintQuestion(&L);
-//    L.alternativeAnswer[0]="123";
-//    L.alternativeAnswer[1]="1232";
-//    L.alternativeAnswer[2]="1213";
-//    L.alternativeAnswer[3]="1223";
-/*  L.alternativeAnswer=(char**)malloc(4*sizeof(char*));
-	for(i=0;i<4;i++)
-		L.alternativeAnswer[i]=(char*)malloc(10*sizeof(char));
-	printf("输入一组字符串:\n");
-	for(i=0;i<4;i++)
-		gets(L.alternativeAnswer[i]);  */
-	//
+	char a[50]={0};
+	char p[50];
+	printf("shu ru\n");
+	gets(p);
+	puts(RemoveTK(p));
 	return 0;
 	
 	
