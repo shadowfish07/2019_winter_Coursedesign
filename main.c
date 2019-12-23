@@ -2,7 +2,7 @@
 #include <string.h>
 #include "MarkingSystemLib.h"
 #include "zhangqianyuLib.h"
-#include "AddTkFile.h"
+#include "maoxiaoyu.h"
 
 int currentDatabase=0;
 databaseList databases;
@@ -66,10 +66,32 @@ void AddQuestionSystem()
 
 int main()
 {
+	int i;
+	question L;
+	printf("ÊäÈëÒ»¸ö×Ö·û´®\n");
+	gets(L.description);
+	strcpy(L.alternativeAnswer[0],"123");
+	strcpy(L.alternativeAnswer[1],"1235");
+	strcpy(L.alternativeAnswer[2],"1233");
+	strcpy(L.alternativeAnswer[3],"1223");
+	PrintQuestion(&L);
+//    L.alternativeAnswer[0]="123";
+//    L.alternativeAnswer[1]="1232";
+//    L.alternativeAnswer[2]="1213";
+//    L.alternativeAnswer[3]="1223";
+/*  L.alternativeAnswer=(char**)malloc(4*sizeof(char*));
+	for(i=0;i<4;i++)
+		L.alternativeAnswer[i]=(char*)malloc(10*sizeof(char));
+	printf("ÊäÈëÒ»×é×Ö·û´®:\n");
+	for(i=0;i<4;i++)
+		gets(L.alternativeAnswer[i]);  */
+	//
+	return 0;
+	
+	
+	
     printf("æ¬¢è¿Žä½¿ç”¨ å•é¡¹é€‰æ‹©é¢˜æ ‡å‡†åŒ–è€ƒè¯•ç³»ç»Ÿ\n");
     printf("æ­£åœ¨æ‰«æé¢˜åº“...\n");
-    question a;
-    a.alternativeAnswer[0]="222";
     databases= *InitDatabaseList(10);
     ReadPathTkFiles();
     if(databases.size==0)
