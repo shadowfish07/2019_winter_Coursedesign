@@ -54,7 +54,6 @@ char*RemoveTK(char*str)
 		i--;
 	if(str[i+1]!='t'&&str[i+2]!='k')
 	{
-		printf("请输入带.tk的文件名\n");
 		return str;
 	}
 	else
