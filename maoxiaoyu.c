@@ -20,6 +20,7 @@ int IstkFile(const char*s)
 void PrintQuestion(const question fromQuestion,int Index)
 {
 	int i;
+	printf("%d¡¢",Index);
 	puts(fromQuestion.description);
 	printf("\n");
 	for(i=0;i<4;i++)
