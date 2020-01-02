@@ -4,7 +4,7 @@
 #include "MarkingSystemLib.h"
 
 
-//æ£€æµ‹ä¼ å…¥çš„æ–‡ä»¶åç¼€æ˜¯å¦ä¸º".tk",æ˜¯è¿”å›1ï¼Œå¦è¿”å›0.
+//¼ì²â´«ÈëµÄÎÄ¼şºó×ºÊÇ·ñÎª".tk",ÊÇ·µ»Ø1£¬·ñ·µ»Ø0.
 int IstkFile(const char*s)
 {
 	char*pFile;
@@ -16,28 +16,27 @@ int IstkFile(const char*s)
 }
 
 
-//è¿”å›ä¸€ä¸ªé—®é¢˜çš„è¾“å‡ºå­—ç¬¦ä¸²ï¼ˆç”¨äºä¸»ç¨‹åºè¾“å‡ºï¼‰ã€‚
+//·µ»ØÒ»¸öÎÊÌâµÄÊä³ö×Ö·û´®£¨ÓÃÓÚÖ÷³ÌĞòÊä³ö£©¡£
 void PrintQuestion(const question fromQuestion,int Index)
 {
 	int i;
-	printf("%dã€",Index);
+	printf("%d¡¢",Index);
 	puts(fromQuestion.description);
-	printf("Aã€%s\n",fromQuestion.alternativeAnswer[0]);
-	printf("Bã€%s\n",fromQuestion.alternativeAnswer[1]);
-	printf("Cã€%s\n",fromQuestion.alternativeAnswer[2]);
-	printf("Dã€%s\n",fromQuestion.alternativeAnswer[3]);
+	printf("A¡¢%s\n",fromQuestion.alternativeAnswer[0]);
+	printf("B¡¢%s\n",fromQuestion.alternativeAnswer[1]);
+	printf("C¡¢%s\n",fromQuestion.alternativeAnswer[2]);
+	printf("D¡¢%s\n",fromQuestion.alternativeAnswer[3]);
 }
 
 
-//åœ¨å½“å‰ç›®å½•ä¸‹æ–°å»ºä¸€ä¸ªç©ºçš„.tkæ–‡ä»¶ã€‚
+//ÔÚµ±Ç°Ä¿Â¼ÏÂĞÂ½¨Ò»¸ö¿ÕµÄ.tkÎÄ¼ş¡£
 void AddTkFile(char*name)
 {
 	FILE*fp;
 	char fileName[100]={0};
-	strcpy(fileName,"C:\\");
 	strcat(fileName,name);
 	strcat(fileName,".tk");
-	fp=fopen(fileName,"w+");
+	fp=fopen(fileName,"w");
 	if(!fp)
 	{
 		printf("can't open file %s\n",fileName);
@@ -47,7 +46,7 @@ void AddTkFile(char*name)
 }
 
 
-//è¾“å…¥ä¸€ä¸ªå¸¦.tkåç¼€çš„æ–‡ä»¶åï¼Œè¾“å‡ºå»æ‰.tkåçš„æ–‡ä»¶åã€‚ï¼ˆä»…è¿”å›ä¸€ä¸ªå»æ‰.tkåçš„æ–‡ä»¶åçš„å­—ç¬¦ä¸²æŒ‡é’ˆï¼Œä¸å¸¦è¾“å‡ºåŠŸèƒ½ï¼‰
+//ÊäÈëÒ»¸ö´ø.tkºó×ºµÄÎÄ¼şÃû£¬Êä³öÈ¥µô.tkºóµÄÎÄ¼şÃû¡££¨½ö·µ»ØÒ»¸öÈ¥µô.tkºóµÄÎÄ¼şÃûµÄ×Ö·û´®Ö¸Õë£¬²»´øÊä³ö¹¦ÄÜ£©
 char*RemoveTK(char*str)
 {
 	int i;
@@ -67,7 +66,6 @@ char*RemoveTK(char*str)
 }
 
 
-//ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ï·ï¿½ï¿½Ö·ï¿½ï¿½Ğ±ï¿½ï¿½ï¿½ï¿½Ğ¶Ï¸ï¿½ï¿½Ö·ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½Ğ±ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½0.
 int IsLegalInput(char input,char legalInputs[])
 {
 	while(*legalInputs!='\0')

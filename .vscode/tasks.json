@@ -7,7 +7,6 @@
             "args": [
                 "-g",
                 "${file}",
-                "${fileDirname}\\PrintQuestion.c",
                 "${fileDirname}\\MarkingSystemLib.c",
                 "${fileDirname}\\zhangqianyuLib.c",
                 "${fileDirname}\\maoxiaoyu.c",
