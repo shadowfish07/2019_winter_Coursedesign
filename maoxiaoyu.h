@@ -11,5 +11,7 @@ void PrintQuestion(const question fromQuestion,int Index);
 void AddTkFile(char*name);
 //输入一个带.tk后缀的文件名，输出去掉.tk后的文件名。（仅返回一个去掉.tk后的文件名的字符串指针，不带输出功能）
 char*RemoveTK(char*str);
+//输入一个字符和一个合法字符列表，判断该字符是否在这个字符列表内，若在返回1，不在返回0.
+int IsLegalInput(char input,char legalInputs[]);
 
 #endif
