@@ -45,7 +45,7 @@ database* ReadtkFile(const char* path)
 //向一个题库文件添加题目
 void AddQuestionToFileAndList(question newQuestion,database* toDatabase)
 {
-    FILE* outfile = fopen(toDatabase->path,"wb");
+    FILE* outfile = fopen(toDatabase->path,"wb+");
     if (outfile == NULL)
         exit(1);
     AddToQuestionList(newQuestion,&toDatabase->questionList);
