@@ -114,6 +114,6 @@ void ReadPathTkFiles()
         printf("%d\t%s\n",databases.size,fileinfo.name);
     }while(!_findnext(handle,&fileinfo));
     _findclose(handle);
-    printf("--题库载入完毕--");
+    printf("--题库载入完毕--\n");
 }
 
