@@ -66,13 +66,7 @@ void AddQuestionSystem()
 
 int main()
 {
-	char a[50]={0};
-	char p[50];
-	printf("shu ru\n");
-	gets(p);
-	puts(RemoveTK(p));
-	return 0;
-	
+
 	
 	
     printf("欢迎使用 单项选择题标准化考试系统\n");
