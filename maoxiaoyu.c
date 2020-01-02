@@ -50,18 +50,19 @@ void AddTkFile(char*name)
 //输入一个带.tk后缀的文件名，输出去掉.tk后的文件名。（仅返回一个去掉.tk后的文件名的字符串指针，不带输出功能）
 char*RemoveTK(char*str)
 {
+	char*p=str;
 	int i;
-	i=strlen(str);
-	while(str[i]!='.')
+	i=strlen(p);
+	while(p[i]!='.')
 		i--;
-	if(str[i+1]!='t'&&str[i+2]!='k')
+	if(p[i+1]!='t'&&p[i+2]!='k')
 	{
-		return str;
+		return p;
 	}
 	else
 	{
-		str[i]='\0'; 
-	    return str;
+		p[i]='\0'; 
+	    return p;
 	}
   
 }
