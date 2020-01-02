@@ -66,12 +66,6 @@ void AddQuestionSystem()
 
 int main()
 {
-<<<<<<< HEAD
-
-	
-	
-=======
->>>>>>> 3fb72d8642b7a7e9dbc64061dc5b16281fe84469
     printf("欢迎使用 单项选择题标准化考试系统\n");
     printf("正在扫描题库...\n");
     databases= *InitDatabaseList(10);
@@ -93,7 +87,7 @@ int main()
         scanf("%d",&inputWay);
         if(inputWay==1)
         {
-            
+            PrintQuestion(databases.databases[currentDatabase].questionList.questions[0]);
         }
         else if(inputWay==2)
         {

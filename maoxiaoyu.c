@@ -4,7 +4,7 @@
 #include "MarkingSystemLib.h"
 
 
-//¼ì²â´«ÈëµÄÎÄ¼şºó×ºÊÇ·ñÎª".tk",ÊÇ·µ»Ø1£¬·ñ·µ»Ø0.
+//æ£€æµ‹ä¼ å…¥çš„æ–‡ä»¶åç¼€æ˜¯å¦ä¸º".tk",æ˜¯è¿”å›1ï¼Œå¦è¿”å›0.
 int IstkFile(const char*s)
 {
 	char*pFile;
@@ -16,18 +16,18 @@ int IstkFile(const char*s)
 }
 
 
-//·µ»ØÒ»¸öÎÊÌâµÄÊä³ö×Ö·û´®£¨ÓÃÓÚÖ÷³ÌĞòÊä³ö£©¡£
-void PrintQuestion(const question*fromQuestion)
+//è¿”å›ä¸€ä¸ªé—®é¢˜çš„è¾“å‡ºå­—ç¬¦ä¸²ï¼ˆç”¨äºä¸»ç¨‹åºè¾“å‡ºï¼‰ã€‚
+void PrintQuestion(const question fromQuestion,int Index)
 {
 	int i;
-	puts(fromQuestion->description);
+	puts(fromQuestion.description);
 	printf("\n");
 	for(i=0;i<4;i++)
-		printf("%s\n",fromQuestion->alternativeAnswer[i]);
+		printf("%s\n",fromQuestion.alternativeAnswer[i]);
 }
 
 
-//ÔÚµ±Ç°Ä¿Â¼ÏÂĞÂ½¨Ò»¸ö¿ÕµÄ.tkÎÄ¼ş¡£
+//åœ¨å½“å‰ç›®å½•ä¸‹æ–°å»ºä¸€ä¸ªç©ºçš„.tkæ–‡ä»¶ã€‚
 void AddTkFile(char*name)
 {
 	FILE*fp;
@@ -45,7 +45,7 @@ void AddTkFile(char*name)
 }
 
 
-//ÊäÈëÒ»¸ö´ø.tkºó×ºµÄÎÄ¼şÃû£¬Êä³öÈ¥µô.tkºóµÄÎÄ¼şÃû¡££¨½ö·µ»ØÒ»¸öÈ¥µô.tkºóµÄÎÄ¼şÃûµÄ×Ö·û´®Ö¸Õë£¬²»´øÊä³ö¹¦ÄÜ£©
+//è¾“å…¥ä¸€ä¸ªå¸¦.tkåç¼€çš„æ–‡ä»¶åï¼Œè¾“å‡ºå»æ‰.tkåçš„æ–‡ä»¶åã€‚ï¼ˆä»…è¿”å›ä¸€ä¸ªå»æ‰.tkåçš„æ–‡ä»¶åçš„å­—ç¬¦ä¸²æŒ‡é’ˆï¼Œä¸å¸¦è¾“å‡ºåŠŸèƒ½ï¼‰
 char*RemoveTK(char*str)
 {
 	int i;
