@@ -87,7 +87,7 @@ int main()
         scanf("%d",&inputWay);
         if(inputWay==1)
         {
-            PrintQuestion(databases.databases[currentDatabase].questionList.questions[0]);
+            //PrintQuestion(databases.databases[currentDatabase].questionList.questions[0]);
         }
         else if(inputWay==2)
         {
