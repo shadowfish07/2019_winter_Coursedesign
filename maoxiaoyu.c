@@ -19,12 +19,13 @@ int IstkFile(const char*s)
 //返回一个问题的输出字符串（用于主程序输出）。
 void PrintQuestion(const question fromQuestion,int Index)
 {
-	int i;
 	printf("%d��",Index);
 	puts(fromQuestion.description);
 	printf("\n");
-	for(i=0;i<4;i++)
-		printf("%s\n",fromQuestion.alternativeAnswer[i]);
+	printf("A��%s\n",fromQuestion.alternativeAnswer[0]);
+	printf("B��%s\n",fromQuestion.alternativeAnswer[1]);
+	printf("C��%s\n",fromQuestion.alternativeAnswer[2]);
+	printf("D��%s\n",fromQuestion.alternativeAnswer[3]);
 }
 
 
