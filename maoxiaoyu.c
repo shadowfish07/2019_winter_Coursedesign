@@ -20,7 +20,7 @@ int IstkFile(const char*s)
 void PrintQuestion(const question fromQuestion,int Index)
 {
 	int i;
-	printf("%d°¢",Index);
+	printf("%d„ÄÅ",Index);
 	puts(fromQuestion.description);
 	printf("\n");
 	for(i=0;i<4;i++)
@@ -66,7 +66,7 @@ char*RemoveTK(char*str)
 }
 
 
-// ‰»Î“ª∏ˆ◊÷∑˚∫Õ“ª∏ˆ∫œ∑®◊÷∑˚¡–±Ì£¨≈–∂œ∏√◊÷∑˚ «∑Ò‘⁄’‚∏ˆ◊÷∑˚¡–±Ìƒ⁄£¨»Ù‘⁄∑µªÿ1£¨≤ª‘⁄∑µªÿ0.
+//ÔøΩÔøΩÔøΩÔøΩ“ªÔøΩÔøΩÔøΩ÷∑ÔøΩÔøΩÔøΩ“ªÔøΩÔøΩÔøΩœ∑ÔøΩÔøΩ÷∑ÔøΩÔøΩ–±ÔøΩÔøΩÔøΩÔøΩ–∂œ∏ÔøΩÔøΩ÷∑ÔøΩÔøΩ«∑ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ÷∑ÔøΩÔøΩ–±ÔøΩÔøΩ⁄£ÔøΩÔøΩÔøΩÔøΩ⁄∑ÔøΩÔøΩÔøΩ1ÔøΩÔøΩÔøΩÔøΩÔøΩ⁄∑ÔøΩÔøΩÔøΩ0.
 int IsLegalInput(char input,char legalInputs[])
 {
 	while(*legalInputs!='\0')
