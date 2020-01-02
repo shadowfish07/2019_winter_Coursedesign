@@ -8,7 +8,7 @@
 #include "maoxiaoyu.h"
 
 extern databaseList databases;
-//è¯»å…¥è·¯å¾„ä¸ºpathçš„.tkæ–‡ä»¶å¹¶è¿”å›å­˜å‚¨å®ƒçš„database,è‹¥è·¯å¾„ä¸‹æ— è¯¥æ–‡ä»¶åˆ™è¿”å›NULL
+//¶ÁÈëÂ·¾¶ÎªpathµÄ.tkÎÄ¼ş²¢·µ»Ø´æ´¢ËüµÄdatabase,ÈôÂ·¾¶ÏÂÎŞ¸ÃÎÄ¼şÔò·µ»ØNULL
 database* ReadtkFile(const char* path)
 {
     FILE* infile = fopen(path,"rb");
@@ -24,7 +24,7 @@ database* ReadtkFile(const char* path)
     return result;
 }
 
-//å‘ä¸€ä¸ªé¢˜åº“æ·»åŠ é¢˜ç›®
+//ÏòÒ»¸öÌâ¿âÌí¼ÓÌâÄ¿
 // void AddQuestion(char* description,char* alternativeAnswer[4],int rightAnswer,database* toDatabase)
 // {
 //     FILE* outfile = fopen(toDatabase->path,"wb");
@@ -42,7 +42,7 @@ database* ReadtkFile(const char* path)
 //     fclose(outfile);
 // }
 
-//å‘ä¸€ä¸ªé¢˜åº“æ–‡ä»¶æ·»åŠ é¢˜ç›®
+//ÏòÒ»¸öÌâ¿âÎÄ¼şÌí¼ÓÌâÄ¿
 void AddQuestionToFileAndList(question newQuestion,database* toDatabase)
 {
     FILE* outfile = fopen(toDatabase->path,"wb");
@@ -53,7 +53,7 @@ void AddQuestionToFileAndList(question newQuestion,database* toDatabase)
     fclose(outfile);
 }
 
-//ä»ä¸€ä¸ªé¢˜åº“ä¸­æŠ½å–numä¸ªé¢˜ç›®ï¼Œè¿”å›å€¼ä¸ºæŠ½åˆ°çš„é¢˜ç›®æ•°ç»„,numå¤§äºé¢˜åº“é¢˜ç›®é‡æ—¶è¿”å›NULL
+//´ÓÒ»¸öÌâ¿âÖĞ³éÈ¡num¸öÌâÄ¿£¬·µ»ØÖµÎª³éµ½µÄÌâÄ¿Êı×é,num´óÓÚÌâ¿âÌâÄ¿Á¿Ê±·µ»ØNULL
 question* GetRandomQuestion(database* fromDatabase,int num)
 {
     if (num>fromDatabase->questionList.size)
@@ -89,7 +89,7 @@ question* GetRandomQuestion(database* fromDatabase,int num)
 	return result;
 }
 
-//è¯»å–ç›®å½•ä¸‹æ‰€æœ‰.tkæ–‡ä»¶å¹¶è¾“å‡º
+//¶ÁÈ¡Ä¿Â¼ÏÂËùÓĞ.tkÎÄ¼ş²¢Êä³ö
 void ReadPathTkFiles()
 {
 
@@ -100,11 +100,11 @@ void ReadPathTkFiles()
     int done;
     if(handle==-1)
     {
-        printf("å½“å‰ç›®å½•ä¸‹æ— ä»»ä½•é¢˜åº“\n");
+        printf("µ±Ç°Ä¿Â¼ÏÂÎŞÈÎºÎÌâ¿â\n");
         return;
     }
-    printf("----é¢˜åº“åˆ—è¡¨----\n");
-    printf("åºå·\tæ–‡ä»¶å\n");
+    printf("----Ìâ¿âÁĞ±í----\n");
+    printf("ĞòºÅ\tÎÄ¼şÃû\n");
     do
     {
         FILE* tkFile =fopen(fileinfo.name,"rb");
@@ -114,6 +114,6 @@ void ReadPathTkFiles()
         printf("%d\t%s\n",databases.size,fileinfo.name);
     }while(!_findnext(handle,&fileinfo));
     _findclose(handle);
-    printf("--é¢˜åº“è½½å…¥å®Œæ¯•--\n");
+    printf("--Ìâ¿âÔØÈëÍê±Ï--\n");
 }
 
