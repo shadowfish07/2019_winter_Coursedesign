@@ -67,6 +67,7 @@ char*RemoveTK(char*str)
 }
 
 
+//输入一个字符和一个合法字符列表，判断该字符是否在这个字符列表内，若在返回1，不在返回0.
 int IsLegalInput(char input,char legalInputs[])
 {
 	while(*legalInputs!='\0')
