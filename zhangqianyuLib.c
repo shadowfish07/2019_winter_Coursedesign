@@ -74,7 +74,7 @@ question* GetRandomQuestion(database* fromDatabase,int num)
             if (randnums[j]==tmp)
             {
                 tmp=rand()%num;
-                j=0;
+                j=-1;
             }
         }
         randnums[i]=tmp;

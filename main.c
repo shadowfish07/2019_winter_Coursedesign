@@ -16,10 +16,10 @@ void CreatNewQuestionSystem(int isAdmin)
     }
     else
     {
-        printf("ÇëÊäÈëÒªÐÂ½¨µÄÌâ¿âÃû\n>");
+        printf("è¯·è¾“å…¥è¦æ–°å»ºçš„é¢˜åº“å\n>");
         scanf("%s",inputFileName);
     }
-    AddTkFile(inputFileName);//TODO£ºÐ´Èë³É¹¦¼ì²â
+    AddTkFile(inputFileName);//TODOï¼šå†™å…¥æˆåŠŸæ£€æµ‹
 
     database* newDatabase=(database*)malloc(sizeof(database));
     newDatabase->path=(char*)malloc(256*sizeof(char));
@@ -28,73 +28,74 @@ void CreatNewQuestionSystem(int isAdmin)
     newDatabase->questionList=*InitQuestionList(50);
     AddToDatabaseList(*newDatabase,&databases);
 
-    printf("³É¹¦ÐÂ½¨%sÌâ¿â admin.tk\n×Ô¶¯½øÈëÌâ¿â±à¼­ÏµÍ³\n",isAdmin?"Ä¬ÈÏ":"");
+    printf("æˆåŠŸæ–°å»º%sé¢˜åº“ admin.tk\nè‡ªåŠ¨è¿›å…¥é¢˜åº“ç¼–è¾‘ç³»ç»Ÿ\n",isAdmin?"é»˜è®¤":"");
     AddQuestionSystem();
 }
 
 void AddQuestionSystem()
 {
-    printf("------------Ìâ¿â±à¼­ÏµÍ³------------\n");
+    printf("------------é¢˜åº“ç¼–è¾‘ç³»ç»Ÿ------------\n");
     while(1)
     {
         question* newQuestion =(question*)malloc(sizeof(question));
-        printf("µ±Ç°±à¼­Ìâ¿â£º%s\n",databases.databases[currentDatabase].path);
-        printf("µ±Ç°Ìâ¿âÌâÄ¿×ÜÊý£º%d\n",databases.databases[currentDatabase].questionList.size);
-        printf("---ÐÂ½¨ÌâÄ¿---\n");
-        printf("ÇëÊäÈëÌâ¸É\n>");
-        scanf("%s",newQuestion->description);
-        printf("ÇëÊäÈëÑ¡ÏîA\n>");
-        scanf("%s",newQuestion->alternativeAnswer[0]);
-        printf("ÇëÊäÈëÑ¡ÏîB\n>");
-        scanf("%s",newQuestion->alternativeAnswer[1]);
-        printf("ÇëÊäÈëÑ¡ÏîC\n>");
-        scanf("%s",newQuestion->alternativeAnswer[2]);
-        printf("ÇëÊäÈëÑ¡ÏîD\n>");
-        scanf("%s",newQuestion->alternativeAnswer[3]);
-        printf("ÇëÊäÈëÕýÈ·´ð°¸(0->A 1->B 2->C 3->D\n>");
+        printf("å½“å‰ç¼–è¾‘é¢˜åº“ï¼š%s\n",databases.databases[currentDatabase].path);
+        printf("å½“å‰é¢˜åº“é¢˜ç›®æ€»æ•°ï¼š%d\n",databases.databases[currentDatabase].questionList.size);
+        printf("---æ–°å»ºé¢˜ç›®---\n");
+        printf("è¯·è¾“å…¥é¢˜å¹²\n>");
+        getchar();
+        gets(newQuestion->description);
+        printf("è¯·è¾“å…¥é€‰é¡¹A\n>");
+        gets(newQuestion->alternativeAnswer[0]);
+        printf("è¯·è¾“å…¥é€‰é¡¹B\n>");
+        gets(newQuestion->alternativeAnswer[1]);
+        printf("è¯·è¾“å…¥é€‰é¡¹C\n>");
+        gets(newQuestion->alternativeAnswer[2]);
+        printf("è¯·è¾“å…¥é€‰é¡¹D\n>");
+        gets(newQuestion->alternativeAnswer[3]);
+        printf("è¯·è¾“å…¥æ­£ç¡®ç­”æ¡ˆ(0->A 1->B 2->C 3->D\n>");
         scanf("%d",&newQuestion->rightAnswer);
-        printf("ÌâÄ¿µ¼ÈëÍê³É\n");
+        printf("é¢˜ç›®å¯¼å…¥å®Œæˆ\n");
         AddQuestionToFileAndList(*newQuestion,&databases.databases[currentDatabase]);
-        printf("ÊÇ·ñ¼ÌÐøµ¼Èë£¿ÈÎÒâ¼ü->ÊÇ N->·ñ\n>");
+        printf("æ˜¯å¦ç»§ç»­å¯¼å…¥ï¼Ÿä»»æ„é”®->æ˜¯ N->å¦\n>");
         char ch;
         getchar();
         scanf("%c",&ch);
         if(ch=='N')
             break;
     }
-    printf("----------ÍË³öÌâ¿â±à¼­ÏµÍ³----------");
+    printf("----------é€€å‡ºé¢˜åº“ç¼–è¾‘ç³»ç»Ÿ----------");
 }
 
 int main()
 {
-    printf("»¶Ó­Ê¹ÓÃ µ¥ÏîÑ¡ÔñÌâ±ê×¼»¯¿¼ÊÔÏµÍ³\n");
-    printf("ÕýÔÚÉ¨ÃèÌâ¿â...\n");
+    printf("æ¬¢è¿Žä½¿ç”¨ å•é¡¹é€‰æ‹©é¢˜æ ‡å‡†åŒ–è€ƒè¯•ç³»ç»Ÿ\n");
+    printf("æ­£åœ¨æ‰«æé¢˜åº“...\n");
     databases= *InitDatabaseList(10);
     ReadPathTkFiles();
     if(databases.size==0)
     {
         CreatNewQuestionSystem(1);
     }
-    //´òÓ¡Ìâ¿âÁÐ±í
+    //æ‰“å°é¢˜åº“åˆ—è¡¨
     while(1)
     {
-        printf("ÇëÑ¡Ôñ½«½øÐÐµÄ²Ù×÷\n");
-        printf("1.½øÐÐ´ðÌâ\n");
-        printf("2.Â¼ÈëÌâ¿â\n");
-        printf("3.´´½¨ÐÂÌâ¿â\n");
-        printf("4.ÍË³ö³ÌÐò\n");
+        printf("è¯·é€‰æ‹©å°†è¿›è¡Œçš„æ“ä½œ\n");
+        printf("1.è¿›è¡Œç­”é¢˜\n");
+        printf("2.å½•å…¥é¢˜åº“\n");
+        printf("3.åˆ›å»ºæ–°é¢˜åº“\n");
+        printf("4.é€€å‡ºç¨‹åº\n");
         printf(">");
         int inputWay;
         scanf("%d",&inputWay);
         if(inputWay==1)
         {
-            printf("--------------´ðÌâÏµÍ³--------------\n");
+            printf("--------------ç­”é¢˜ç³»ç»Ÿ--------------\n");
             while(1)
             {
                 int grade=0;
-                printf("µ±Ç°Ìâ¿â£º%s\n",databases.databases[currentDatabase].path);
-                printf("×ÜÌâÊý£º%d\n",databases.databases[currentDatabase].questionList.size);
-                printf("ÇëÊäÈëÓû³éÌâÌâÊý:\n>");
+                printf("å½“å‰é¢˜åº“ï¼š%s\n",databases.databases[currentDatabase].path);
+                printf("æ€»é¢˜æ•°ï¼š%d\n",databases.databases[currentDatabase].questionList.size);
+                printf("è¯·è¾“å…¥æ¬²æŠ½é¢˜é¢˜æ•°:\n>");
                 int randNum;
                 while(1)
                 {
@@ -105,7 +106,7 @@ int main()
                     }
                     else
                     {
-                        printf("ÊäÈë¸ñÊ½´íÎó£¬ÇëÖØÐÂÊäÈë\n>");
+                        printf("è¾“å…¥æ ¼å¼é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥\n>");
                     }
                     
                 }
@@ -123,15 +124,15 @@ int main()
                         grade++;
                     currentQ++;
                 }
-                printf("ÌâÄ¿³éÈ¡Íê±Ï\n");
-                printf("µÃ·Ö£º%d\n",grade);
-                printf("ÊÇ·ñÖØÐÂ³éÌâ£¿ÈÎÒâ¼ü-ÊÇ£¬N-·ñ\n>");
+                printf("é¢˜ç›®æŠ½å–å®Œæ¯•\n");
+                printf("å¾—åˆ†ï¼š%d\n",grade);
+                printf("æ˜¯å¦é‡æ–°æŠ½é¢˜ï¼Ÿä»»æ„é”®-æ˜¯ï¼ŒN-å¦\n>");
                 char inputC;
                 getchar();
                 scanf("%c",&inputC);
                 if(inputC=='N'||inputC=='n')
                 {
-                    printf("------------ÍË³ö´ðÌâÏµÍ³------------\n");
+                    printf("------------é€€å‡ºç­”é¢˜ç³»ç»Ÿ------------\n");
                     break;
                 }
             }
@@ -139,7 +140,7 @@ int main()
         }
         else if(inputWay==2)
         {
-            printf("ÇëÊäÈëÒª±à¼­µÄÌâ¿âÐòºÅ\n>");
+            printf("è¯·è¾“å…¥è¦ç¼–è¾‘çš„é¢˜åº“åºå·\n>");
             int inputIndex;
             scanf("%d",&inputIndex);
             currentDatabase=inputIndex-1;
