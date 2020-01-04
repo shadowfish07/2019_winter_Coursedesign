@@ -28,7 +28,7 @@ void CreatNewQuestionSystem(int isAdmin)
     newDatabase->questionList=*InitQuestionList(50);
     AddToDatabaseList(*newDatabase,&databases);
 
-    printf("成功新建%s题库 admin.tk\n自动进入题库编辑系统\n",isAdmin?"默认":"");
+    printf("成功新建%s题库 %s\n自动进入题库编辑系统\n",isAdmin?"默认":"",newDatabase->path);
     AddQuestionSystem();
 }
 
@@ -42,7 +42,7 @@ void AddQuestionSystem()
         printf("当前题库题目总数：%d\n",databases.databases[currentDatabase].questionList.size);
         printf("---新建题目---\n");
         printf("请输入题干\n>");
-        getchar();
+        //getchar();
         gets(newQuestion->description);
         printf("请输入选项A\n>");
         gets(newQuestion->alternativeAnswer[0]);
@@ -63,7 +63,7 @@ void AddQuestionSystem()
         if(ch=='N')
             break;
     }
-    printf("----------退出题库编辑系统----------");
+    printf("----------退出题库编辑系统----------\n");
 }
 
 int main()

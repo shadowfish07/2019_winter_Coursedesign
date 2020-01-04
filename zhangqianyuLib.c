@@ -53,29 +53,43 @@ void AddQuestionToFileAndList(question newQuestion,database* toDatabase)
     fclose(outfile);
 }
 
+
+int isIn(int in,int arr[],int size)
+{
+    int i;
+    for(i=0;i<size;i++)
+    {
+        if(in==arr[i])
+        {
+            return 1;
+        }
+    }
+    return 0;
+}
+
 //从一个题库中抽取num个题目，返回值为抽到的题目数组,num大于题库题目量时返回NULL
 question* GetRandomQuestion(database* fromDatabase,int num)
 {
     if (num>fromDatabase->questionList.size)
         return NULL;
     question* result = (question*)malloc(num*sizeof(question));
+
     srand((unsigned)time(NULL));
     int i;
     int* randnums = (int*)malloc(num*sizeof(int));
     int tmp;
     int j;
-    memset(randnums,-1,num);
-
     for(i=0;i<num;i++)
     {
+        randnums[i]=-1;
+    }
+    for(i=0;i<num;i++)
+    {
+
         tmp=rand()%num;
-        for(j=0;j<num;j++)
+        while(isIn(tmp,randnums,num))
         {
-            if (randnums[j]==tmp)
-            {
-                tmp=rand()%num;
-                j=-1;
-            }
+            tmp=rand()%num;
         }
         randnums[i]=tmp;
     }
